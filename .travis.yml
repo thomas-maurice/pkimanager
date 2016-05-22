@@ -11,11 +11,11 @@ deploy:
   provider: releases
   skip_cleanup: true
   api_key:
-    secure: "UvJHr1DBz3cyo0wRf19n4VfH8nZbxy67SjcrxRv1e2+5n6Eh7inND9RqhJuWcbCKQv5H9r/jSXJZmM6JbDhNqdJrg1XdjxqUBW3SvNSQMTqsrG2FhFnAmTyTKDTrhdD1v3ETsQnD2NwkpwJeXTO1GEU2dEgF8M2Jh6l5MPa1eN/Ft+C5uM1G56kGcjcqII4BgDMCvNzXN8kzn5mWl6/Fnngsm3LwOUwHjaItYIyweWQdpgorALo7GXY5H3+9eW6viwwShoQPW16lLrrtzP0eFthA/lNXnOYzwc7268h6B/6uzLUmQWDNr8OGgXliiMIddoofAPjTjUQCGAvU6WtCt0LGYsQRHouS3T4Krgv9eWsyf1wj2WEuo9ANLgRxmKzmGIrTElOG/RTvj0rd7YFR3mbIX6Q7sGE8/t0G5NnfHWN2EI8toFulSwHI1dD969pVl/RS3pVrxuRVJnE+QeYTZVBSKfUdN6k9Kvr5B7MtB13OGTXDflMm41sFaQvneOLW1QqJg0GPyJY08nDTWwezBwCn3uNop/BFjq4OLNKGli6/3/A4ph7nBDlRzbWqlZD+HCNO7maDQOxwxxpou2jWVUv83i6cTCRVackV4enEc1K7l+VFtXIg2kZD31QtyZqXNpWAlKJlckyjZRmWdR5u7ql0jxAjSf5+qmtEs59/W88="
+    secure: "VJH3IVxQmz5y8hvEQqA+eElnEH+iDJMUHb122CV7+xHK5KXp1AITug+b/+zd1Sm5IDRnfkFmBMSUqFHmVJ+wv7RYAK9kUiLsXRIrOYEMVLJS82AOlU3dJLeXPT1+e81spYDfH9Th+r8qNbjTaYWdmhdIiWjoKsohr2o2Sohvul+IiMvNy2TWSuKSgVWbp5uP8PcefFcvu6pbeeTfUCnx+R7ZEqAymb/s2NUQS+gW3sxgyiUHCjm/S4jUC4CW2AjwKTTon0KhRufIsOsb6N+bxHaOkTSa84Kby2V/RDzb7kixVeF7mEKyKEO4Ysk5/69P6oei77qCsUr0zV/XgZOBk+sPQuKEayTp8F0bB8zcugEuufPWAK29xmv01cjDWz2V31BGAmY++6DXbW6QfmCpOZR89qR4Gc/doEZDdXKxCfRmulIl3fOTiqosOzaZNgBU827b8G8juzmewvOwM5E8PiBsNQOXVflx/Mevw+G+8D0uDFfVsRChi65894dYh70Ovo+dnI3lyHpRWQBP9hK7zoZJka5Gk6BJJlSbs9IL+JQCDJX1O+HAqx0hSbH2yHFLITTXlMEVtbQKYMWvZ/a8kxFl1Q0bFUs7b+qiGTgBBcKQdKxkuWpyU3Wf3FVAgJjUZmFXiHV7A+5kUp8rPcZsGxfiqGpk+AUST44gbaAJJQU="
   file:
-    - bin/pkimanager-linux-386 
-    - bin/pkimanager-linux-amd64 
+    - bin/pkimanager-linux-386
+    - bin/pkimanager-linux-amd64
     - bin/pkimanager-linux-arm
-    - bin/pkimanager-linux-arm64 
+    - bin/pkimanager-linux-arm64
   on:
     tags: true
