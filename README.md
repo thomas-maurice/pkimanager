@@ -23,7 +23,8 @@ go build
 This program enables you to manage one PKI. The configuration is done in the pkimanager.yml file
 which syntax is easy.
 ```yaml
-root_ca: /some/path/where/to/install/your/ca
+# Directory in which will be installed the CA
+ca_root: /some/path/where/to/install/your/ca
 ```
 
 The following directories will be created:
