@@ -45,6 +45,9 @@ You can do it via the command `pkimanager ce create <commonName>`. The following
 * `-v`: Validity in years (default 1)
 * `-f`: Force, will overwrite any existing file
 
+And some more, slightly mode exotic are available too, please check the `ca create --help` command for
+more information.
+
 Example:
 ```
 $ pkimanager ca create maurice.fr -k 2048 -c FR -l Lille -v 100
@@ -62,7 +65,8 @@ INFO[0000] Generating the certificate vpn.maurice.fr with a 4096 bits key and a 
 INFO[0002] Generation complete, certificate written to CertificationAutority/certificates/vpn.maurice.fr.crt, and key to CertificationAutority/keys/vpn.maurice.fr.key
 ```
 
-Basically the same options are available, `pkimanager certificate create --help` for more information.
+Basically the same options are available, plus support for IP addresses and alternate
+DNS management, check `pkimanager certificate create --help` for more information.
 
 ## Revoking a certificate
 ```
