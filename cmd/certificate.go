@@ -21,6 +21,9 @@ var CertificateValidity int
 var CertificateKeySize int
 var CertificateCountry string
 var CertificateLocality string
+var CertificateProvince string
+var CertificateOrganization string
+var CertificateOrganizationalUnit string
 var CertificateAlternateNames string
 
 var CertificateCmd = &cobra.Command{
@@ -88,6 +91,19 @@ var CreateCertificateCmd = &cobra.Command{
 		if CertificateLocality != "" {
 			name.Locality = []string{CertificateLocality}
 		}
+
+        if CertificateProvince != "" {
+			name.Province = []string{CertificateProvince}
+		}
+
+        if CertificateOrganization != "" {
+			name.Organization = []string{CertificateOrganization}
+		}
+
+        if CertificateOrganizationalUnit != "" {
+			name.OrganizationalUnit = []string{CertificateOrganizationalUnit}
+		}
+
 
 		logrus.Infof("Generating the certificate %s with a %d bits key and a %d years validity", args[0], CertificateKeySize, CertificateValidity)
 		certificate, key, err := pkiutils.GenerateNewCertificate(name, CertificateValidity, CertificateKeySize, ca, caKey, ClientCertificate, strings.Split(CertificateAlternateNames, ","))
@@ -173,6 +189,9 @@ func InitCertificateCmd() {
 	CreateCertificateCmd.Flags().IntVarP(&CertificateValidity, "validity", "v", 1, "For how many years will this certificate be valid")
 	CreateCertificateCmd.Flags().IntVarP(&CertificateKeySize, "key-size", "k", 4096, "Certificate key size, a high number is prefered")
 	CreateCertificateCmd.Flags().StringVarP(&CertificateCountry, "country", "c", "", "Certificate country code")
+    CreateCertificateCmd.Flags().StringVarP(&CertificateOrganization, "org", "o", "", "Certificate organization")
+    CreateCertificateCmd.Flags().StringVarP(&CertificateOrganizationalUnit, "ou", "", "", "Certificate organizational unit")
+    CreateCertificateCmd.Flags().StringVarP(&CertificateProvince, "province", "p", "", "Certificate province")
 	CreateCertificateCmd.Flags().StringVarP(&CertificateLocality, "locality", "l", "", "Certificate locality")
 	CertificateCmd.AddCommand(ListCertificateCmd)
 	CertificateCmd.AddCommand(CreateCertificateCmd)
