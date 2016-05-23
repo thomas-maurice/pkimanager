@@ -5,14 +5,16 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"crypto/x509/pkix"
+	"errors"
 	"github.com/satori/go.uuid"
 	"math/big"
+	"net"
 	"strings"
 	"time"
 )
 
 // Generates a new Certificate object
-func GenerateNewCertificate(name pkix.Name, validity int, keyLength int, ca *x509.Certificate, caKey *rsa.PrivateKey, clientCert bool, altnames []string) (*x509.Certificate, *rsa.PrivateKey, error) {
+func GenerateNewCertificate(name pkix.Name, validity int, keyLength int, ca *x509.Certificate, caKey *rsa.PrivateKey, clientCert bool, altnames []string, ips []string) (*x509.Certificate, *rsa.PrivateKey, error) {
 	number := uuid.NewV4().Bytes()
 	serial := big.NewInt(0)
 	serial.SetBytes(number)
@@ -30,6 +32,18 @@ func GenerateNewCertificate(name pkix.Name, validity int, keyLength int, ca *x50
 		for _, altname := range altnames {
 			if strings.TrimSpace(altname) != "" {
 				certificate.DNSNames = append(certificate.DNSNames, strings.TrimSpace(altname))
+			}
+		}
+	}
+
+	if len(ips) != 0 {
+		for _, ip := range ips {
+			if strings.TrimSpace(ip) != "" {
+				if address := net.ParseIP(ip); address != nil {
+					certificate.IPAddresses = append(certificate.IPAddresses, address)
+				} else {
+					return nil, nil, errors.New("Could not parse IP " + ip)
+				}
 			}
 		}
 	}

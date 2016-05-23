@@ -1,5 +1,5 @@
 # pkimanager
-A tool to manage your own Private Key Infrastructure
+A tool to manage your own Private Key Infrastructure [![Build Status](https://travis-ci.org/thomas-maurice/pkimanager.svg?branch=master)](https://travis-ci.org/thomas-maurice/pkimanager)
 
 ## Introduction
 This tool aims at making easier managing your very own PKI, for small Infrastructures

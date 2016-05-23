@@ -57,15 +57,15 @@ var CreateCACmd = &cobra.Command{
 			name.Locality = []string{CALocality}
 		}
 
-        if CAProvince != "" {
+		if CAProvince != "" {
 			name.Province = []string{CAProvince}
 		}
 
-        if CAOrganization != "" {
+		if CAOrganization != "" {
 			name.Organization = []string{CAOrganization}
 		}
 
-        if CAOrganizationalUnit != "" {
+		if CAOrganizationalUnit != "" {
 			name.OrganizationalUnit = []string{CAOrganizationalUnit}
 		}
 
@@ -113,11 +113,11 @@ func InitCACmd() {
 	CreateCACmd.Flags().IntVarP(&CAValidity, "validity", "v", 1, "For how many years will this CA be valid")
 	CreateCACmd.Flags().IntVarP(&CAKeySize, "key-size", "k", 4096, "CA private key size")
 	CreateCACmd.Flags().StringVarP(&CACountry, "country", "c", "", "CA country code")
-    CreateCACmd.Flags().StringVarP(&CAOrganization, "org", "o", "", "CA organization")
-    CreateCACmd.Flags().StringVarP(&CAOrganizationalUnit, "ou", "", "", "CA organizational unit")
-    CreateCACmd.Flags().StringVarP(&CAProvince, "province", "p", "", "CA province")
+	CreateCACmd.Flags().StringVarP(&CAOrganization, "org", "o", "", "CA organization")
+	CreateCACmd.Flags().StringVarP(&CAOrganizationalUnit, "ou", "", "", "CA organizational unit")
+	CreateCACmd.Flags().StringVarP(&CAProvince, "province", "p", "", "CA province")
 	CreateCACmd.Flags().StringVarP(&CALocality, "locality", "l", "", "CA locality")
-    CreateCACmd.Flags().StringVarP(&CACRLDistURL, "crl-dist-url", "", "", "CA Certificate Revocation List distribution URL")
+	CreateCACmd.Flags().StringVarP(&CACRLDistURL, "crl-dist-url", "", "", "CA Certificate Revocation List distribution URL")
 	CACmd.AddCommand(CreateCACmd)
 	CACmd.AddCommand(ShowCACmd)
 }

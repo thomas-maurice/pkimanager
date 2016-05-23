@@ -25,6 +25,7 @@ var CertificateProvince string
 var CertificateOrganization string
 var CertificateOrganizationalUnit string
 var CertificateAlternateNames string
+var CertificateIPs string
 
 var CertificateCmd = &cobra.Command{
 	Use:   "certificate",
@@ -92,21 +93,29 @@ var CreateCertificateCmd = &cobra.Command{
 			name.Locality = []string{CertificateLocality}
 		}
 
-        if CertificateProvince != "" {
+		if CertificateProvince != "" {
 			name.Province = []string{CertificateProvince}
 		}
 
-        if CertificateOrganization != "" {
+		if CertificateOrganization != "" {
 			name.Organization = []string{CertificateOrganization}
 		}
 
-        if CertificateOrganizationalUnit != "" {
+		if CertificateOrganizationalUnit != "" {
 			name.OrganizationalUnit = []string{CertificateOrganizationalUnit}
 		}
 
-
 		logrus.Infof("Generating the certificate %s with a %d bits key and a %d years validity", args[0], CertificateKeySize, CertificateValidity)
-		certificate, key, err := pkiutils.GenerateNewCertificate(name, CertificateValidity, CertificateKeySize, ca, caKey, ClientCertificate, strings.Split(CertificateAlternateNames, ","))
+		certificate, key, err := pkiutils.GenerateNewCertificate(name,
+			CertificateValidity,
+			CertificateKeySize,
+			ca,
+			caKey,
+			ClientCertificate,
+			strings.Split(CertificateAlternateNames, ","),
+			strings.Split(CertificateIPs, ","),
+		)
+
 		if err != nil {
 			logrus.Fatalf("Could not generate certificate: %s", err)
 		}
@@ -183,15 +192,16 @@ var RevokeCertificateCmd = &cobra.Command{
 
 func InitCertificateCmd() {
 	CreateCertificateCmd.Flags().BoolVarP(&forceReplaceCertificate, "force", "f", false, "Force the replacement of existing files")
-	CreateCertificateCmd.Flags().StringVarP(&CertificateAlternateNames, "alternate-names", "a", "", "Alternate names for the certificate")
+	CreateCertificateCmd.Flags().StringVarP(&CertificateAlternateNames, "alternate-names", "a", "", "Alternate names for the certificate, coma separated")
+	CreateCertificateCmd.Flags().StringVarP(&CertificateIPs, "ips", "i", "", "IP addresses for the certificate, coma separated")
 	CreateCertificateCmd.Flags().BoolVarP(&ClientCertificate, "client", "", false, "Is the certificate designed for a client")
 	CreateCertificateCmd.Flags().BoolVarP(&copyCASubject, "ca-subject", "", false, "Copy CA Subject, except for CommonName")
 	CreateCertificateCmd.Flags().IntVarP(&CertificateValidity, "validity", "v", 1, "For how many years will this certificate be valid")
 	CreateCertificateCmd.Flags().IntVarP(&CertificateKeySize, "key-size", "k", 4096, "Certificate key size, a high number is prefered")
 	CreateCertificateCmd.Flags().StringVarP(&CertificateCountry, "country", "c", "", "Certificate country code")
-    CreateCertificateCmd.Flags().StringVarP(&CertificateOrganization, "org", "o", "", "Certificate organization")
-    CreateCertificateCmd.Flags().StringVarP(&CertificateOrganizationalUnit, "ou", "", "", "Certificate organizational unit")
-    CreateCertificateCmd.Flags().StringVarP(&CertificateProvince, "province", "p", "", "Certificate province")
+	CreateCertificateCmd.Flags().StringVarP(&CertificateOrganization, "org", "o", "", "Certificate organization")
+	CreateCertificateCmd.Flags().StringVarP(&CertificateOrganizationalUnit, "ou", "", "", "Certificate organizational unit")
+	CreateCertificateCmd.Flags().StringVarP(&CertificateProvince, "province", "p", "", "Certificate province")
 	CreateCertificateCmd.Flags().StringVarP(&CertificateLocality, "locality", "l", "", "Certificate locality")
 	CertificateCmd.AddCommand(ListCertificateCmd)
 	CertificateCmd.AddCommand(CreateCertificateCmd)

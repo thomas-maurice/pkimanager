@@ -22,9 +22,9 @@ func GenerateNewCertificationAuthority(name pkix.Name, validity int, keyLength i
 		KeyUsage:    x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign | x509.KeyUsageCRLSign,
 	}
 
-    if CRLDistURL != "" {
-        ca.CRLDistributionPoints = []string{CRLDistURL}
-    }
+	if CRLDistURL != "" {
+		ca.CRLDistributionPoints = []string{CRLDistURL}
+	}
 
 	privateKey, err := rsa.GenerateKey(rand.Reader, keyLength)
 	if err != nil {
