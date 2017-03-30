@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
@@ -17,7 +18,7 @@ var VersionCmd = &cobra.Command{
 	Short: "Print the version number",
 	Long:  ``,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Certification Authority Manager v0.01")
+		fmt.Println("Certification Authority Manager v0.3")
 	},
 }
 

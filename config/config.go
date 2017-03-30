@@ -1,10 +1,9 @@
 package config
 
 import (
-	"github.com/Sirupsen/logrus"
-	"github.com/spf13/viper"
-	"os"
 	"path"
+
+	"github.com/spf13/viper"
 )
 
 func InitConfig() error {
@@ -18,13 +17,6 @@ func InitConfig() error {
 	err := viper.ReadInConfig()
 	if err != nil {
 		return err
-	}
-
-	if _, err := os.Stat(viper.GetString("ca_root")); err != nil {
-		logrus.Infof("Creating directory %s", viper.Get("ca_root"))
-		if err := os.MkdirAll(viper.GetString("ca_root"), 0750); err != nil {
-			logrus.Fatalf("Could not create %s: %s", viper.Get("ca_root"), err)
-		}
 	}
 
 	return nil
