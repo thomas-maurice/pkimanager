@@ -3,8 +3,9 @@ package main
 import (
 	"os"
 
-	"github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
+
 	"github.com/thomas-maurice/pkimanager/cmd"
 	"github.com/thomas-maurice/pkimanager/config"
 )

@@ -4,14 +4,16 @@ import (
 	"crypto/rand"
 	"crypto/x509/pkix"
 	"encoding/pem"
-	"github.com/Sirupsen/logrus"
-	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
-	"github.com/thomas-maurice/pkimanager/pkiutils"
 	"io/ioutil"
 	"os"
 	"path"
 	"time"
+
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+
+	"github.com/thomas-maurice/pkimanager/pkiutils"
 )
 
 var CRLCmd = &cobra.Command{

@@ -24,8 +24,8 @@ func GenerateNewCertificate(name pkix.Name, validity int, keyLength int, ca *x50
 		NotBefore:             time.Now(),
 		NotAfter:              time.Now().AddDate(validity, 0, 0),
 		BasicConstraintsValid: true,
-		IsCA:     false,
-		KeyUsage: x509.KeyUsageDigitalSignature | x509.KeyUsageKeyAgreement,
+		IsCA:                  false,
+		KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageKeyAgreement,
 	}
 
 	if len(altnames) != 0 {

@@ -3,15 +3,17 @@ package cmd
 import (
 	"crypto/x509/pkix"
 	"fmt"
-	"github.com/Sirupsen/logrus"
-	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
-	"github.com/thomas-maurice/pkimanager/config"
-	"github.com/thomas-maurice/pkimanager/pkiutils"
 	"io/ioutil"
 	"os"
 	"path"
 	"strings"
+
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+
+	"github.com/thomas-maurice/pkimanager/config"
+	"github.com/thomas-maurice/pkimanager/pkiutils"
 )
 
 var forceReplaceCertificate bool

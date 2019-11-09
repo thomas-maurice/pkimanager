@@ -2,12 +2,14 @@ package cmd
 
 import (
 	"crypto/x509/pkix"
-	"github.com/Sirupsen/logrus"
-	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
-	"github.com/thomas-maurice/pkimanager/pkiutils"
 	"os"
 	"path"
+
+	"github.com/sirupsen/logrus"
+	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
+
+	"github.com/thomas-maurice/pkimanager/pkiutils"
 )
 
 var forceReplaceCA bool
